@@ -1,22 +1,22 @@
 #include "../../SERVICES/BIT_UTILIS.h"
 #include "../../SERVICES/STD_TYPES.h"
 #include "../../INCLUDE/MCAL/DIO/Dio.h"
+#include "./user.h"
 
 #include "../../INCLUDE/MCAL/UART/UART.h"
 #include <stdio.h>
 #include "avr/delay.h"
 #include "string.h"
 
+
 #define LEDON '1'
 #define LEDOFF	'0'
-#define MAX_LENGTH 5
+
 
 	u8 userFound = 0;
 	u8 userIndex = 0;
 	u8 passFound = 0;
 
-	u8 dataUser[MAX_LENGTH];
-	u8 dataPass[MAX_LENGTH];
 	u8 usernames[3][MAX_LENGTH] = {
 			{ 'u', 's', 'e', 'r', '1' },
 			{ 'u', 's','e', 'r', '2' },
@@ -60,8 +60,6 @@ int main() {
 					passFound = 0;
 					adminMode = 0;
 					userIndex = 0;
-					clear_array(dataUser, MAX_LENGTH);
-					clear_array(dataPass, MAX_LENGTH+1);
 					LogIn();
 					break;
 				default:
@@ -81,25 +79,26 @@ int main() {
 
 void LogIn(){
 //Linear search for the user
+	user usr;
 		for (u8 k = 0; k < 3; k++) { //prompts the user to type the username 3 times
 			UART_sendString("Type your username:\n");
 
 			//checks the entered username against the 3, iff the user wasn't found
 			if (userFound != 1) {
-				UART_u8GetString(dataUser, MAX_LENGTH); //gets the string (works fine)
+				UART_u8GetString(usr.dataUser, MAX_LENGTH); //gets the string (works fine)
 				for (u8 i = 0; i < 3; i++) {
 					for (u8 j = 0; j < MAX_LENGTH; j++) {
-						if (dataUser[j] == usernames[i][j]) {
+						if (usr.dataUser[j] == usernames[i][j]) {
 							userFound = 1;
 							UART_sendString("I am true ");
-							UART_voidSendChar(dataUser[j]);
+							UART_voidSendChar(usr.dataUser[j]);
 							UART_voidSendChar(' ');
 							UART_voidSendChar(usernames[i][j]);
 							UART_voidSendChar('\n');
 						} else {
 							userFound = 0;
 							UART_sendString("I am False ");
-							UART_voidSendChar(dataUser[i]);
+							UART_voidSendChar(usr.dataUser[i]);
 							UART_voidSendChar(' ');
 							UART_voidSendChar(usernames[i][j]);
 							UART_voidSendChar('\n');
@@ -121,12 +120,12 @@ void LogIn(){
 			for (u8 var = 0; var < 3; ++var) {
 				UART_voidSendChar('\n');
 				UART_sendString("Type your password:\n");
-				UART_u8GetString(dataPass, MAX_LENGTH+1);
+				UART_u8GetString(usr.dataPass, MAX_LENGTH+1);
 			for (u8 l = 0; l < MAX_LENGTH; l++) {
-				if (dataPass[l+1] == passwords[userIndex][l]) {
+				if (usr.dataPass[l+1] == passwords[userIndex][l]) {
 					passFound = 1;
 					UART_sendString("I am true ");
-					UART_voidSendChar(dataPass[l+1]);
+					UART_voidSendChar(usr.dataPass[l+1]);
 					UART_voidSendChar(' ');
 					UART_voidSendChar(passwords[userIndex][l]);
 					UART_voidSendChar('\n');
@@ -134,7 +133,7 @@ void LogIn(){
 				else {
 					passFound = 0;
 					UART_sendString("I am False ");
-					UART_voidSendChar(dataPass[l]);
+					UART_voidSendChar(usr.dataPass[l]);
 					UART_voidSendChar(' ');
 					UART_voidSendChar(passwords[userIndex][l]);
 					UART_voidSendChar('\n');
