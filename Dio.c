@@ -4,10 +4,10 @@
  *  Created on: Sep 2, 2022
  *      Author: Administrator
  */
-#include "../../../INCLUDE/MCAL/DIO/Dio.h"
-#include "../../../INCLUDE/MCAL/DIO/Dio_prv.h"
-#include "../../../SERVICES/BIT_UTILIS.h"
-#include "../../../SERVICES/STD_TYPES.h"
+#include "Dio.h"
+#include "Dio_prv.h"
+#include "BIT_UTILIS.h"
+#include "STD_TYPES.h"
 
 DIO_tenuErrorStatus DIO_enuSetPinValue(u8 Copy_u8PortId, u8 Copy_u8PinId,
 		u8 Copy_u8PinVal) {

@@ -7,7 +7,7 @@
 #ifndef INCLUDE_MCAL_DIO_DIO_H_
 #define INCLUDE_MCAL_DIO_DIO_H_
 
-#include "../../../SERVICES/STD_TYPES.h"
+#include "STD_TYPES.h"
 
 typedef enum {
 	DIO_enuOk, DIO_invalidInput

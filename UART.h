@@ -7,7 +7,7 @@
 #ifndef INCLUDE_MCAL_UART_UART_H_
 #define INCLUDE_MCAL_UART_UART_H_
 
-#include "../../../SERVICES/STD_TYPES.h"
+#include "STD_TYPES.h"
 //UCSRA
 #define RXC		7
 #define TXC 	6
@@ -22,12 +22,12 @@
 #define TXB8	0
 #define RXB8	1
 
-void clear_array(u8 *arr, u8 size);
+void clear_array(u8 *arr,const u8 size);
 void UART_voidInit(void);
-void UART_voidSendChar(u8 data);
+void UART_voidSendChar(const u8 data);
 u8 UART_u8GetChar(void);
-void UART_sendString(u8 *data);
-void UART_u8GetString(u8 *data, u8 strLength);
+void UART_sendString(const u8 *data);
+void UART_u8GetString(u8 *data,const u8 strLength);
 //unsigned int UART_u32GetNineBits(void);
 //void UART_voidSendNineBits(unsigned int data);
 

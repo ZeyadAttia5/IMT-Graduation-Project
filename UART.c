@@ -6,10 +6,10 @@
  */
 
 // Task 1 support 9-bit data transmission
-#include "../../../INCLUDE/MCAL/UART/UART_prv.h"
-#include "../../../INCLUDE/MCAL/UART/UART.h"
-#include "../../../SERVICES/BIT_UTILIS.h"
-#include "../../../SERVICES/STD_TYPES.h"
+#include "UART_prv.h"
+#include "UART.h"
+#include "BIT_UTILIS.h"
+#include "STD_TYPES.h"
 #include "avr/delay.h"
 
 void UART_voidInit(void) {
@@ -40,25 +40,29 @@ u8 UART_u8GetChar(void) {
 	return LOC_u8Result;
 }
 
-void UART_sendString(u8 *data) {
+void UART_sendString(const u8 *data) {
 	for (int i = 0; data[i] != '\0'; i++) {
 		UART_voidSendChar(data[i]);
 	}
 }
 
-void UART_u8GetString(u8 *string, u8 strLength) {
+void UART_u8GetString(u8 *Str,const u8 strLength) {
 	u8 LOC_u8Data = 0;
 	u8 idx = 0;
 	LOC_u8Data = UART_u8GetChar();
 	while (idx < strLength) {
-		string[idx] = LOC_u8Data;
+		Str[idx] = LOC_u8Data;
 		LOC_u8Data = UART_u8GetChar();
+		while (LOC_u8Data==' ')
+		{
+			LOC_u8Data = UART_u8GetChar();
+		}
 		idx++;
 	}
 //	string[idx] = '\0';
 }
 
-void clear_array(u8 *arr, u8 size) {
+void clear_array(u8 *arr,const u8 size) {
 	int i;
 	for (i = 0; i < size; i++) {
 		arr[i] = '\0';
