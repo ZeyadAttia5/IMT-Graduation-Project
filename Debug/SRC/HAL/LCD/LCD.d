@@ -1,0 +1,19 @@
+SRC/HAL/LCD/LCD.o: ../SRC/HAL/LCD/LCD.c \
+ ../SRC/HAL/LCD/../../../INCLUDE/MCAL/DIO/Dio.h \
+ ../SRC/HAL/LCD/../../../INCLUDE/MCAL/DIO/../../../SERVICES/STD_TYPES.h \
+ ../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/LCD.h \
+ ../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/../../../SERVICES/STD_TYPES.h \
+ ../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/./LCD_cfg.h \
+ ../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/LCD_cfg.h
+
+../SRC/HAL/LCD/../../../INCLUDE/MCAL/DIO/Dio.h:
+
+../SRC/HAL/LCD/../../../INCLUDE/MCAL/DIO/../../../SERVICES/STD_TYPES.h:
+
+../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/LCD.h:
+
+../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/../../../SERVICES/STD_TYPES.h:
+
+../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/./LCD_cfg.h:
+
+../SRC/HAL/LCD/../../../INCLUDE/HAL/LCD/LCD_cfg.h:
