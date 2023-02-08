@@ -46,11 +46,11 @@ void UART_sendString(const u8 *data) {
 	}
 }
 
-void UART_u8GetString(u8 *Str,const u8 strLength) {
+void UART_u8GetString(u8 *Str) {
 	u8 LOC_u8Data = 0;
 	u8 idx = 0;
 	LOC_u8Data = UART_u8GetChar();
-	while (idx < strLength) {
+	while (LOC_u8Data != '\n') {
 		Str[idx] = LOC_u8Data;
 		LOC_u8Data = UART_u8GetChar();
 		while (LOC_u8Data==' ')
