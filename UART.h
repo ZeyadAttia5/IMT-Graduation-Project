@@ -28,6 +28,7 @@ void UART_voidSendChar(const u8 data);
 u8 UART_u8GetChar(void);
 void UART_sendString(const u8 *data);
 void UART_u8GetString(u8 *data);
+//void UART_u8GetString(u8 Str);
 //unsigned int UART_u32GetNineBits(void);
 //void UART_voidSendNineBits(unsigned int data);
 
